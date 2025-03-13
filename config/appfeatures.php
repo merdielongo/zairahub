@@ -40,30 +40,109 @@ return [
     */
     'modules' => [
 
-        // Blog
+        // Organization
         [
-            'name' => 'blog',
-            'label_fr' => 'Blog',
-            'label_en' => 'Blog',
-            'roles' => ['moderator', 'author', 'instructor'],
+            'name' => 'organization',
+            'label_fr' => 'Organisation',
+            'label_en' => 'Organization',
+            'roles' => ['owner', 'admin', 'root', 'member'],
             'features' => [
                 [
-                    'name' => 'blog.articles',
-                    'label_fr' => 'Mes articles',
-                    'label_en' => 'My articles',
+                    'name' => 'organization.organization',
+                    'label_fr' => 'Organisation',
+                    'label_en' => 'Organization',
                     'crud_permission' => true,
-                    'roles' => [],
+                    'roles' => ['owner', 'admin', 'root'],
+                    'permissions' => [
+                        [
+                            'name' => '.validation',
+                            'label_fr' => 'Validation des organisations',
+                            'label_en' => 'Organizations Validation',
+                            'roles' => ['admin', 'root'],
+                        ]
+                    ]
+                ],
+                [
+                    'name' => 'organization.team',
+                    'label_fr' => 'Equipe',
+                    'label_en' => 'Team',
+                    'crud_permission' => true,
+                    'roles' => ['owner'],
                     'permissions' => []
                 ],
                 [
-                    'name' => 'blog.event',
-                    'label_fr' => 'Mes events',
-                    'label_en' => 'My events',
+                    'name' => 'organization.member',
+                    'label_fr' => 'Membre',
+                    'label_en' => 'Member',
                     'crud_permission' => true,
-                    'roles' => [],
+                    'roles' => ['owner'],
                     'permissions' => []
                 ],
-            ],
+                [
+                    'name' => 'organization.role',
+                    'label_fr' => 'Role',
+                    'label_en' => 'Role',
+                    'crud_permission' => true,
+                    'roles' => ['owner'],
+                    'permissions' => []
+                ],
+                [
+                    'name' => 'organization.permission',
+                    'label_fr' => 'Permission',
+                    'label_en' => 'Permission',
+                    'crud_permission' => true,
+                    'roles' => ['owner'],
+                    'permissions' => []
+                ],
+            ]
+        ],
+
+        // Offer
+        [
+            'name' => 'offer',
+            'label_fr' => 'Offre',
+            'label_en' => 'Offer',
+            'roles' => ['owner', 'admin', 'root', 'member'],
+            'features' => [
+                [
+                    'name' => 'offer.offer',
+                    'label_fr' => 'Offre',
+                    'label_en' => 'Offer',
+                    'crud_permission' => true,
+                    'roles' => ['admin', 'root'],
+                    'permissions' => [
+                        [
+                            'name' => '.validation',
+                            'label_fr' => 'Validation des offres',
+                            'label_en' => 'Offers Validation',
+                            'roles' => ['admin', 'root'],
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
+            'name' => 'subscription',
+            'label_fr' => 'Abonnement',
+            'label_en' => 'Subscription',
+            'roles' => ['owner', 'admin', 'root', 'member'],
+            'features' => [
+                [
+                    'name' => 'subscription.subscription',
+                    'label_fr' => 'Abonnement',
+                    'label_en' => 'Subscription',
+                    'crud_permission' => true,
+                    'roles' => ['admin', 'root'],
+                    'permissions' => [
+                        [
+                            'name' => '.validation',
+                            'label_fr' => 'Validation des abonnements',
+                            'label_en' => 'Subscriptions Validation',
+                            'roles' => ['admin', 'root'],
+                        ]
+                    ]
+                ]
+            ]
         ],
 
         //Institution

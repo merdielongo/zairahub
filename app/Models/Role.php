@@ -11,4 +11,8 @@ class Role extends \Spatie\Permission\Models\Role
     const ROOT = 'root';
     const OWNER = 'owner';
     const MEMBER = 'member';
+    const INSTRUCTOR = 'instructor';
+    const STUDENT = 'student';
+    const AUTHOR = 'author';
+    const GUEST = 'guest';
 }
