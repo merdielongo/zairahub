@@ -9,7 +9,9 @@ import { Head, useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
 
 const form = useForm({
-    name: '',
+    firstname: '',
+    lastname: '',
+    gender: 'm',
     email: '',
     password: '',
     password_confirmation: '',
@@ -28,10 +30,29 @@ const submit = () => {
 
         <form @submit.prevent="submit" class="flex flex-col gap-6">
             <div class="grid gap-6">
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="grid gap-2">
+                        <Label for="firstname">Firstname</Label>
+                        <Input id="firstname" type="text" required autofocus :tabindex="1" autocomplete="firstname" v-model="form.firstname" placeholder="First name" />
+                        <InputError :message="form.errors.firstname" />
+                    </div>
+
+                    <div class="grid gap-2">
+                        <Label for="lastname">Lastname</Label>
+                        <Input id="lastname" type="text" required autofocus :tabindex="1" autocomplete="lastname" v-model="form.lastname" placeholder="Last name" />
+                        <InputError :message="form.errors.lastname" />
+                    </div>
+                </div>
+
                 <div class="grid gap-2">
-                    <Label for="name">Name</Label>
-                    <Input id="name" type="text" required autofocus :tabindex="1" autocomplete="name" v-model="form.name" placeholder="Full name" />
-                    <InputError :message="form.errors.name" />
+                    <Label for="gender">Gender</Label>
+                    <select class="input" v-model="form.gender">
+                        <option disabled>Select gender</option>
+                        <option selected value="m">Homme</option>
+                        <option value="f">Femme</option>
+                    </select>
+                    <InputError :message="form.errors.gender" />
                 </div>
 
                 <div class="grid gap-2">
@@ -40,41 +61,43 @@ const submit = () => {
                     <InputError :message="form.errors.email" />
                 </div>
 
-                <div class="grid gap-2">
-                    <Label for="password">Password</Label>
-                    <Input
-                        id="password"
-                        type="password"
-                        required
-                        :tabindex="3"
-                        autocomplete="new-password"
-                        v-model="form.password"
-                        placeholder="Password"
-                    />
-                    <InputError :message="form.errors.password" />
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="grid gap-2">
+                        <Label for="password">Password</Label>
+                        <Input
+                            id="password"
+                            type="password"
+                            required
+                            :tabindex="3"
+                            autocomplete="new-password"
+                            v-model="form.password"
+                            placeholder="Password"
+                        />
+                        <InputError :message="form.errors.password" />
+                    </div>
+
+                    <div class="grid gap-2">
+                        <Label for="password_confirmation">Confirm password</Label>
+                        <Input
+                            id="password_confirmation"
+                            type="password"
+                            required
+                            :tabindex="4"
+                            autocomplete="new-password"
+                            v-model="form.password_confirmation"
+                            placeholder="Confirm password"
+                        />
+                        <InputError :message="form.errors.password_confirmation" />
+                    </div>
                 </div>
 
-                <div class="grid gap-2">
-                    <Label for="password_confirmation">Confirm password</Label>
-                    <Input
-                        id="password_confirmation"
-                        type="password"
-                        required
-                        :tabindex="4"
-                        autocomplete="new-password"
-                        v-model="form.password_confirmation"
-                        placeholder="Confirm password"
-                    />
-                    <InputError :message="form.errors.password_confirmation" />
-                </div>
-
-                <Button type="submit" class="mt-2 w-full" tabindex="5" :disabled="form.processing">
-                    <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
+                <Button type="submit" class="w-full mt-2" tabindex="5" :disabled="form.processing">
+                    <LoaderCircle v-if="form.processing" class="w-4 h-4 animate-spin" />
                     Create account
                 </Button>
             </div>
 
-            <div class="text-center text-sm text-muted-foreground">
+            <div class="text-sm text-center text-muted-foreground">
                 Already have an account?
                 <TextLink :href="route('login')" class="underline underline-offset-4" :tabindex="6">Log in</TextLink>
             </div>
