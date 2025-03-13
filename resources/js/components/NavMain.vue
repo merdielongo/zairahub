@@ -8,6 +8,10 @@ defineProps<{
 }>();
 
 const page = usePage<SharedData>();
+
+const hasRole = (roles?: string[]) => {
+    return !roles || roles.some(role => page.props.auth.user.roles?.some(userRole => userRole.name === role));
+};
 </script>
 
 <template>
@@ -15,7 +19,7 @@ const page = usePage<SharedData>();
         <SidebarGroupLabel>Platform</SidebarGroupLabel>
         <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
-                <SidebarMenuButton as-child :is-active="item.href === page.url">
+                <SidebarMenuButton as-child :is-active="item.href === page.url" v-if="hasRole(item.roles)">
                     <Link :href="item.href">
                         <component :is="item.icon" />
                         <span>{{ item.title }}</span>

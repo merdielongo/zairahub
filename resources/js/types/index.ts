@@ -15,6 +15,7 @@ export interface NavItem {
     href: string;
     icon?: LucideIcon;
     isActive?: boolean;
+    roles?: string[];
 }
 
 export interface SharedData extends PageProps {
@@ -28,7 +29,25 @@ export interface User {
     name: string;
     email: string;
     avatar?: string;
+    roles?: Role[];
+    person: Person;
     email_verified_at: string | null;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface Person {
+    firstname: string;
+    lastname: string;
+    middlename?: string;
+    gender: string;
+    person_type_id?: number;
+}
+
+export interface Role {
+    id: number;
+    name: string;
+    guard_name: string;
     created_at: string;
     updated_at: string;
 }
