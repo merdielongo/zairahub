@@ -11,15 +11,19 @@ class Module extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name_fr',
-        'name_en',
-        'is_active',
+        'label_fr',
+        'label_en',
+        'status',
+        'name',
+        'description_fr',
+        'description_en',
+        'order',
     ];
 
-    protected function casts(): array
+    protected function casts()
     {
         return [
-            'is_active' => 'boolean',
+            'order' => 'integer',
         ];
     }
 
