@@ -25,6 +25,15 @@ class Offer extends Model
         'status',
     ];
 
+    protected function casts()
+    {
+        return [
+            'options' => 'array',
+            'is_trial' => 'boolean',
+            'price' => 'float',
+        ];
+    }
+
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);
