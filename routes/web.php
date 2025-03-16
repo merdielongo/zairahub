@@ -18,5 +18,6 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('organizations', OrganizationController::class);
+    Route::post('organizations/store-for-user', [OrganizationController::class, 'storeForUser'])->name('organizations.storeForUser');
     Route::get('/register/organization', [OrganizationController::class, 'createForUser'])->name('register.organization');
 });
