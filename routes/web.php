@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrganizationController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -13,3 +14,9 @@ Route::get('dashboard', function () {
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::resource('organizations', OrganizationController::class);
+    Route::get('/register/organization', [OrganizationController::class, 'createForUser'])->name('register.organization');
+});

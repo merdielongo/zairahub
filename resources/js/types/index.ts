@@ -52,4 +52,21 @@ export interface Role {
     updated_at: string;
 }
 
+export interface OrganizationType {
+    id: number;
+    name_fr: string;
+    name_en: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface Country {
+    id: number;
+    name: string;
+    prefix: string;
+    phone_code: string;
+    created_at: string;
+    updated_at: string;
+}
+
 export type BreadcrumbItemType = BreadcrumbItem;

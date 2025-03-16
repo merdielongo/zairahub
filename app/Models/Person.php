@@ -43,7 +43,7 @@ class Person extends Model
 
     public function organizations(): HasMany
     {
-        return $this->hasMany(Organization::class);
+        return $this->hasMany(Organization::class, 'owner_id');
     }
 
     public function paths(): HasMany

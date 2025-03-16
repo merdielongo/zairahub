@@ -57,4 +57,9 @@ class RegisteredUserController extends Controller
 
         return to_route('dashboard');
     }
+
+    public function createOrganization(Request $request)
+    {
+        dd($request);
+    }
 }
