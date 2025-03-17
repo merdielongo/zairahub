@@ -144,5 +144,8 @@ class OrganizationRepository
         $this->getById($id)->forceDelete();
     }
 
-    //
+    public function getAllWith($relations)
+    {
+        return $this->organization->with($relations)->get();
+    }
 }

@@ -25,4 +25,9 @@ class Currency extends Model
     {
         return $this->hasMany(OfferPayment::class);
     }
+
+    public static function getInstance(string $prefix): ?Currency
+    {
+        return Currency::where('prefix','=', $prefix)->first();
+    }
 }

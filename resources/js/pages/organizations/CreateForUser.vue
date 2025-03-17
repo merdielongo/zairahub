@@ -21,7 +21,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route('organizations.store'), {
+    form.post(route('organizations.storeForUser'), {
         onFinish: () => form.reset('name', 'phone', 'email'),
     });
 };
