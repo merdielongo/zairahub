@@ -15,6 +15,16 @@ use Inertia\Inertia;
 class OrganizationController extends Controller
 {
 
+    public function index()
+    {
+        return Inertia::render('organizations/index', [
+            'organizations' => app(OrganizationRepository::class)->getAllWith([
+                'organizationType',
+                'owner',
+            ]),
+        ]);
+    }
+
     public function createForUser()
     {
         return Inertia::render('organizations/CreateForUser', [

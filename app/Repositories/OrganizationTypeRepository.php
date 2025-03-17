@@ -143,6 +143,4 @@ class OrganizationTypeRepository
     {
         $this->getById($id)->forceDelete();
     }
-
-    //
 }
